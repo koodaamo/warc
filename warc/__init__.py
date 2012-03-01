@@ -245,7 +245,7 @@ def open(filename, mode="rb"):
 class WARCReader:
     RE_VERSION = re.compile("WARC/(\d+.\d+)\r\n")
     RE_HEADER = re.compile(r"([a-zA-Z_\-]+): *(.*)\r\n")
-    SUPPORTED_VERSIONS = ["1.0"]
+    SUPPORTED_VERSIONS = ["1.0", "0.18", "0.17"]
     
     def __init__(self, fileobj):
         self.fileobj = fileobj
