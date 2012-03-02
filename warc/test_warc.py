@@ -1,4 +1,4 @@
-from . import WARCReader, WARCHeader, CaseInsensitiveDict, WARCFile
+from . import WARCReader, WARCHeader, CaseInsensitiveDict, WARCFile, WARCRecord
 
 from StringIO import StringIO
 
@@ -158,6 +158,12 @@ class TestWarcFile:
         f = WARCFile(fileobj=StringIO(SAMPLE_WARC_RECORD_TEXT))
         assert f.read() is not None
         assert f.read() is None
-    
+
+class TestWarcRecord:
+    def test_generate(self):
+        header = WARCHeader({"WARC-Type": "warcinfo", "WARC-Record-ID": "123"})
+        r = WARCRecord(header)
+        assert r.__repr__() == "<WARCRecord: type='warcinfo' record_id=123>"
+
 if __name__ == '__main__':
     TestWARCReader().test_read_header()

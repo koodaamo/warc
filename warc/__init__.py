@@ -183,7 +183,7 @@ class WARCRecord:
         return f.getvalue()
     
     def __repr__(self):
-        return "<WARCRecord: type=%r record_id=%s>" % (self['type'], self['record_id'])
+        return "<WARCRecord: type=%r record_id=%s>" % (self.header.type, self.header.record_id)
         
     @staticmethod
     def from_response(response):
